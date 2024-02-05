@@ -121,7 +121,6 @@ public class Calculator {
 
         return result;
     }
-
     public static String numToRomanian(int number) {
         int[] values = {100, 90, 50, 40, 10, 9, 5, 4, 1};
         String[] symbols = {"C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
