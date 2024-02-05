@@ -22,7 +22,6 @@ public class Calculator {
                         if (symbol == '0' && numArray1Count == 0) {
                             throw new Exception("Некорректные данные");
                         }
-
                         numArray1[numArray1Count] = symbol;
                         numArray1Count++;
                     } else if (symbol == ' ' && numArray1Count > 0) {
@@ -69,7 +68,7 @@ public class Calculator {
         if (isNum1Arabic) {
             int number1 = parseArabic(numArray1, numArray1Count), number2 = parseArabic(numArray2, numArray2Count);
 
-            if (number1 >= 10 || number2 >= 10) {
+            if (number1 > 10 || number2 > 10) {
                 throw new Exception("Некорректные данные");
             }
 
@@ -77,7 +76,7 @@ public class Calculator {
         } else {
             int number1 = parseRomanian(numArray1, numArray1Count), number2 = parseRomanian(numArray2, numArray2Count);
 
-            if (number1 >= 10 || number2 >= 10) {
+            if (number1 > 10 || number2 > 10) {
                 throw new Exception("Некорректные данные");
             }
 
@@ -109,7 +108,7 @@ public class Calculator {
 
         for (int i = 0; i < numberCount; i++) {
             char symbol = number[i];
-            int curIndex = Arrays.asList(symbols).indexOf("" + symbol), curValue = values[curIndex];
+            int curIndex = Arrays.asList(symbols).indexOf("" + symbol) /*символ в строку*/, curValue = values[curIndex];
 
             if (i > 0 && curValue > prevValue) {
                 result += curValue - 2 * prevValue;
@@ -152,7 +151,7 @@ public class Calculator {
     }
 
     public static boolean isValidSymbol(char symbol) {
-        return symbol >= '1' && symbol <= '9' || symbol == 'I' || symbol == 'V' || symbol == 'X';
+        return symbol >= '0' && symbol <= '9' || symbol == 'I' || symbol == 'V' || symbol == 'X';
     }
 
     public static boolean isValidOperation(char operation) {
@@ -163,7 +162,7 @@ public class Calculator {
         boolean result = true;
 
         for (int i = 0; i < numberCount; i++) {
-            if (number[i] < '1' || number[i] > '9') {
+            if (number[i] < '0' || number[i] > '9') {
                 result = false;
                 break;
             }
